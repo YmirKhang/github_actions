@@ -1,0 +1,125 @@
+{
+    "ipcMode": null,
+    "executionRoleArn": "arn:aws:iam::485222049581:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "dnsSearchDomains": null,
+            "environmentFiles": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "secretOptions": null,
+                "options": {
+                    "awslogs-group": "/ecs/demo-task",
+                    "awslogs-region": "eu-central-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "entryPoint": [],
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "containerPort": 80
+                }
+            ],
+            "command": [],
+            "linuxParameters": null,
+            "cpu": 0,
+            "environment": [],
+            "resourceRequirements": null,
+            "ulimits": null,
+            "dnsServers": null,
+            "mountPoints": [],
+            "workingDirectory": null,
+            "secrets": null,
+            "dockerSecurityOptions": null,
+            "memory": null,
+            "memoryReservation": null,
+            "volumesFrom": [],
+            "stopTimeout": null,
+            "image": "485222049581.dkr.ecr.eu-central-1.amazonaws.com/ymirkhang:599dc7950699fa128c73f643d19240f861c8fe9d",
+            "startTimeout": null,
+            "firelensConfiguration": null,
+            "dependsOn": null,
+            "disableNetworking": null,
+            "interactive": null,
+            "healthCheck": null,
+            "essential": true,
+            "links": [],
+            "hostname": null,
+            "extraHosts": null,
+            "pseudoTerminal": null,
+            "user": null,
+            "readonlyRootFilesystem": null,
+            "dockerLabels": null,
+            "systemControls": null,
+            "privileged": null,
+            "name": "github_actions_nginx"
+        }
+    ],
+    "placementConstraints": [],
+    "memory": "512",
+    "taskRoleArn": null,
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "taskDefinitionArn": "arn:aws:ecs:eu-central-1:485222049581:task-definition/demo-task:1",
+    "family": "demo-task",
+    "requiresAttributes": [
+        {
+            "targetId": null,
+            "targetType": null,
+            "value": null,
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "targetId": null,
+            "targetType": null,
+            "value": null,
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "targetId": null,
+            "targetType": null,
+            "value": null,
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "targetId": null,
+            "targetType": null,
+            "value": null,
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "targetId": null,
+            "targetType": null,
+            "value": null,
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "targetId": null,
+            "targetType": null,
+            "value": null,
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "targetId": null,
+            "targetType": null,
+            "value": null,
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "pidMode": null,
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "runtimePlatform": null,
+    "cpu": "256",
+    "revision": 1,
+    "status": "ACTIVE",
+    "inferenceAccelerators": null,
+    "proxyConfiguration": null,
+    "volumes": []
+}
