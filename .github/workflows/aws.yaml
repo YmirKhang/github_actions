@@ -32,10 +32,10 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
           IMAGE_NAME: github_actions_tester
-          IMAGE_VERSION: 1.0
+          IMAGE_VERSION: 1.1
         run: |
           # Build a docker container and push it to ECR 
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_NAME:$IMAGE_VERSION .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_VERSION .
           echo "Pushing image to ECR..."
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_NAME:$IMAGE_VERSION
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY/$IMAGE_NAME:$IMAGE_VERSION
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_VERSION
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_VERSION
