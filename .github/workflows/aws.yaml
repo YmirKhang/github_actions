@@ -6,6 +6,16 @@ on:
 
 name: Build and push test nginx app
 
+env:
+  AWS_REGION: eu-central-1 # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: ymirkhang # set this to your Amazon ECR repository name
+  ECS_SERVICE: defaul2-service # set this to your Amazon ECS service name
+  ECS_CLUSTER: default2 # set this to your Amazon ECS cluster name
+  ECS_TASK_DEFINITION:
+    task_definition.json # set this to the path to your Amazon ECS task definition
+    # file, e.g. .aws/task-definition.json
+  CONTAINER_NAME: github_actions_nginx
+
 jobs:
   deploy:
     name: Build and Push Image
@@ -38,3 +48,11 @@ jobs:
           echo "Pushing image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA"
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@97587c9d45a4930bf0e3da8dd2feb2a463cf4a3a
+        with:
+          task-definition: ${{ env.ECS_TASK_DEFINITION }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
