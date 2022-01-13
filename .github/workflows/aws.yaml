@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
 
-name: Build and push test nginx app
+name: Build, push and deploy nginx app
 
 env:
   AWS_REGION: eu-central-1 # set this to your preferred AWS region, e.g. us-west-1
