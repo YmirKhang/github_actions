@@ -14,7 +14,7 @@ env:
   ECS_TASK_DEFINITION:
     task_definition.json # set this to the path to your Amazon ECS task definition
     # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: github_actions_nginx
+  CONTAINER_NAME: myapp
 
 jobs:
   deploy:
